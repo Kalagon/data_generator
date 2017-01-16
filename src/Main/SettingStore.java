@@ -9,7 +9,7 @@ import java.nio.file.Paths;
  */
 public class SettingStore {
 	private int generatorSeed;
-	private int outputSize;
+	private long outputSize;
 	private String fileLocation;
 	private int bufferSize;
 	private NoiseAlgorithms.ALGORITHMS noiseAlgorithm;
@@ -44,11 +44,11 @@ public class SettingStore {
 		this.generatorSeed = generatorSeed;
 	}
 
-	public int getOutputSize() {
+	public long getOutputSize() {
 		return outputSize;
 	}
 
-	public void setOutputSize(int outputSize) {
+	public void setOutputSize(long outputSize) {
 		this.outputSize = outputSize;
 	}
 
@@ -113,14 +113,4 @@ public class SettingStore {
 		}
 		return result;
 	}
-
-	private float constrainNoiseFactor(float noiseFactor) {
-		if (noiseFactor > 1) {
-			noiseFactor = 1;
-		} else if (noiseFactor < 0) {
-			noiseFactor = 0;
-		}
-		return noiseFactor;
-	}
-
 }

@@ -1,5 +1,6 @@
 package Generator;
 
+import Main.NoiseAlgorithms;
 import Main.SettingStore;
 
 import java.nio.file.Path;
@@ -50,7 +51,7 @@ public class SettingProvider {
 	 * Returns the number of requested data sets.
 	 * @return The output size.
 	 */
-	public int getOutputSize() {
+	public long getOutputSize() {
 		return settings.getOutputSize();
 	}
 
@@ -73,10 +74,11 @@ public class SettingProvider {
 	/**
 	 * Creates the concrete object of a subclass of NoiseAlgorithm and returns it.
 	 * @return The NoiseAlgorithm.
+	 * @throws ReflectiveOperationException If the object cannot be instantiated.
 	 */
-	public NoiseAlgorithm getNoiseAlgorithm() {
-
-		return null;
+	public NoiseAlgorithm getNoiseAlgorithm() throws ReflectiveOperationException {
+		NoiseAlgorithm result = NoiseAlgorithms.getInstanceOf(this.settings.getNoiseAlgorithm());
+		return result;
 	}
 
 }
