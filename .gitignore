@@ -1,6 +1,11 @@
 out/
 *.class
 
+#intellij files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/*.iws
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
