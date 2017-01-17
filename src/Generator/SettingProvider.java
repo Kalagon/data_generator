@@ -77,8 +77,7 @@ public class SettingProvider {
 	 * @throws ReflectiveOperationException If the object cannot be instantiated.
 	 */
 	public NoiseAlgorithm getNoiseAlgorithm() throws ReflectiveOperationException {
-		NoiseAlgorithm result = NoiseAlgorithms.getInstanceOf(this.settings.getNoiseAlgorithm());
-		return result;
+		return NoiseAlgorithms.getInstanceOf(this.settings.getNoiseAlgorithm());
 	}
 
 }

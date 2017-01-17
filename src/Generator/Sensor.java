@@ -1,19 +1,12 @@
 package Generator;
 
-import java.util.Random;
-
 /**
- * Template class for Sensors. The specific Sensors have to implement abstract methods to be usable in the Generator.
+ * Interface for Sensors. The specific Sensors have to implement this to be usable in the Generator.
  */
-public abstract class Sensor {
+public interface Sensor {
 	/**
-	 * Used to store a reference to the RNG used for raw number generation.
-	 */
-	Random rng;
-
-	/**
-	 * This method returns a complete SensorData object filled with processed random data.
+	 * This method returns a complete SensorData object filled with processed data.
 	 * @return SensorData
 	 */
-	public abstract SensorData getData();
+	SensorData getData();
 }
