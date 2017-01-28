@@ -5,9 +5,9 @@ import Generator.NoiseAlgorithm;
 import java.util.HashMap;
 
 /**
- * Contains all possible NoiseAlgorithms. Provides tools for listing and checking.
+ * Contains all possible NoiseAlgorithmFactory. Provides tools for listing and checking.
  */
-public class NoiseAlgorithms {
+public class NoiseAlgorithmFactory {
 
 	/**
 	 * The names of all implemented algorithms.

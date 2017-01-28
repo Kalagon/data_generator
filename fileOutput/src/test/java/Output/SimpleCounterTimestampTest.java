@@ -14,11 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class SimpleCounterTimestampTest {
 	private SimpleCounterTimestamp testObject;
 
-	@BeforeAll
-	static void singleSetUp() {
-		SettingProvider.set(new SettingStore());
-	}
-
 	@BeforeEach
 	void setUp() {
 		this.testObject = new SimpleCounterTimestamp();
@@ -29,7 +24,7 @@ class SimpleCounterTimestampTest {
 		String[] expectedResult = {"0000", "0001", "0002"};
 		String[] actualResult = new String[3];
 		for (int i = 0; i < 3; i++) {
-			actualResult[i] = this.testObject.getString();
+			actualResult[i] = this.testObject.toString();
 		}
 		assertArrayEquals(expectedResult, actualResult);
 	}

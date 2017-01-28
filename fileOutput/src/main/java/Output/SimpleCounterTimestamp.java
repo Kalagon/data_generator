@@ -1,6 +1,7 @@
 package Output;
 
 import Generator.SettingProvider;
+import Main.SettingStore;
 
 /**
  * Uses a simple counter for timestamps.
@@ -14,7 +15,11 @@ public class SimpleCounterTimestamp implements Timestamp {
 	 */
 	public SimpleCounterTimestamp() {
 		this.counter = 0;
-		long outputSize = SettingProvider.get().getOutputSize();
+		long outputSize = 1000;
+		SettingProvider settings = SettingProvider.get();
+		if (settings != null) {
+			outputSize = settings.getOutputSize();
+		}
 		int outputLength = String.valueOf(outputSize).length();
 		this.formatForPadding = "%0" + outputLength + "d";
 	}
@@ -25,7 +30,7 @@ public class SimpleCounterTimestamp implements Timestamp {
 	 * @return String
 	 */
 	@Override
-	public String getString() {
+	public String toString() {
 		String result = String.format(this.formatForPadding, this.counter);
 		this.counter++;
 		return result;

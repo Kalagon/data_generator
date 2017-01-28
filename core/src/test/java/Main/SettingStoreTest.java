@@ -1,10 +1,7 @@
 package Main;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,7 +52,7 @@ class SettingStoreTest {
 
 	@Test
 	void setGetNoiseAlgorithm() {
-		assertEquals(NoiseAlgorithms.ALGORITHMS.RANDOM, testObject.getNoiseAlgorithm());
+		assertEquals(NoiseAlgorithmFactory.ALGORITHMS.RANDOM, testObject.getNoiseAlgorithm());
 	}
 
 

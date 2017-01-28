@@ -12,7 +12,7 @@ public class SettingStore {
 	private long outputSize;
 	private String fileLocation;
 	private int bufferSize;
-	private NoiseAlgorithms.ALGORITHMS noiseAlgorithm;
+	private NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm;
 	private NoiseSettingStore noiseSettings;
 
 	/**
@@ -23,11 +23,11 @@ public class SettingStore {
 		this.outputSize = 1000;
 		this.fileLocation = "output.txt";
 		this.bufferSize = 100;
-		this.noiseAlgorithm = NoiseAlgorithms.ALGORITHMS.RANDOM;
+		this.noiseAlgorithm = NoiseAlgorithmFactory.ALGORITHMS.RANDOM;
 		this.noiseSettings = new RandomNoiseSettingStore(98653489, 0.5f);
 	}
 
-	public SettingStore(int generatorSeed, int outputSize, String fileLocation, int bufferSize, NoiseAlgorithms.ALGORITHMS noiseAlgorithm, NoiseSettingStore noiseSettings) throws InvalidSettingException {
+	public SettingStore(int generatorSeed, int outputSize, String fileLocation, int bufferSize, NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm, NoiseSettingStore noiseSettings) throws InvalidSettingException {
 		this.setGeneratorSeed(generatorSeed);
 		this.setOutputSize(outputSize);
 		this.setFileLocation(fileLocation);
@@ -81,11 +81,11 @@ public class SettingStore {
 		this.bufferSize = bufferSize;
 	}
 
-	public NoiseAlgorithms.ALGORITHMS getNoiseAlgorithm() {
+	public NoiseAlgorithmFactory.ALGORITHMS getNoiseAlgorithm() {
 		return noiseAlgorithm;
 	}
 
-	public void setNoiseAlgorithm(NoiseAlgorithms.ALGORITHMS noiseAlgorithm) {
+	public void setNoiseAlgorithm(NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm) {
 		this.noiseAlgorithm = noiseAlgorithm;
 	}
 

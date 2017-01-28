@@ -8,10 +8,12 @@ public class SensorData {
 	 * The value of the last measurement.
 	 */
 	private float currentValue;
+
 	/**
-	 * The maximum deviation of the measurement under normal circumstances.
+	 * The maximum deviation of the measurement under "normal" circumstances.
 	 */
 	private float precision;
+
 	private String measurementUnit;
 
 	public SensorData(float currentValue, float precision, String measurementUnit) {
@@ -20,10 +22,24 @@ public class SensorData {
 		this.measurementUnit = measurementUnit;
 	}
 
+	public float getCurrentValue() {
+		return currentValue;
+	}
+
+	public float getPrecision() {
+		return precision;
+	}
+
+	public String getMeasurementUnit() {
+		return measurementUnit;
+	}
 
 	@Override
 	public String toString() {
-		Character separator = ',';
+		return this.toString(",");
+	}
+
+	public String toString(String separator) {
 		return  "currentValue:" + currentValue + separator +
 				"precision:" + precision + separator +
 				"measurementUnit:" + measurementUnit;

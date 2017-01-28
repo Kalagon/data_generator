@@ -1,7 +1,6 @@
 package Output;
 
 import Generator.SensorData;
-import Generator.SettingProvider;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,24 +10,15 @@ import java.util.List;
  */
 public class FileOutputBuffer {
 	private LinkedList<SensorData> buffer;
-	private int bufferCurrentSize;
-	private int bufferMaxSize;
+	private long bufferCurrentSize;
+	private long bufferMaxSize;
 	private Timestamp timestamp;
 
 	/**
 	 * Initializes the object with values from SettingProvider.
+	 * @param bufferMaxSize The maximum size of the buffer. Soft cap.
 	 */
-	public FileOutputBuffer() {
-		this.bufferCurrentSize = 0;
-		this.buffer = new LinkedList<>();
-		this.timestamp = new SimpleCounterTimestamp();
-		this.bufferMaxSize = SettingProvider.get().getBufferSize();
-	}
-
-	/**
-	 * Initializes the object with values from SettingProvider.
-	 */
-	public FileOutputBuffer(int bufferMaxSize) {
+	public FileOutputBuffer(long bufferMaxSize) {
 		this.bufferCurrentSize = 0;
 		this.buffer = new LinkedList<>();
 		this.timestamp = new SimpleCounterTimestamp();
@@ -73,7 +63,7 @@ public class FileOutputBuffer {
 		SensorData temp;
 		while (!this.buffer.isEmpty()) {
 			temp = this.buffer.removeFirst();
-			result.add(timestamp.getString() + " " + temp.toString());
+			result.add(timestamp.toString() + " " + temp.toString());
 		}
 		return result;
 	}

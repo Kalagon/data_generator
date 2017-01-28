@@ -1,9 +1,6 @@
 package Output;
 
 import Generator.SensorData;
-import Generator.SettingProvider;
-import Main.SettingStore;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,11 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class FileOutputBufferTest {
 	FileOutputBuffer testObject;
-
-	@BeforeAll
-	static void setUp() {
-		SettingProvider.set(new SettingStore());
-	}
 
 	@BeforeEach
 	void setUpEach() {
@@ -44,7 +36,7 @@ class FileOutputBufferTest {
 
 	@Test
 	void isEmpty() {
-		FileOutputBuffer testObject = new FileOutputBuffer();
+		FileOutputBuffer testObject = new FileOutputBuffer(2);
 		boolean result1 = testObject.isEmpty();
 		testObject.append(new SensorData(0.3f, 0.5f, "C"));
 		boolean result2 = testObject.isEmpty();

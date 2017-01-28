@@ -1,6 +1,6 @@
 package Generator;
 
-import Main.NoiseAlgorithms;
+import Main.NoiseAlgorithmFactory;
 import Main.SettingStore;
 
 import java.nio.file.Path;
@@ -77,7 +77,7 @@ public class SettingProvider {
 	 * @throws ReflectiveOperationException If the object cannot be instantiated.
 	 */
 	public NoiseAlgorithm getNoiseAlgorithm() throws ReflectiveOperationException {
-		return NoiseAlgorithms.getInstanceOf(this.settings.getNoiseAlgorithm());
+		return NoiseAlgorithmFactory.getInstanceOf(this.settings.getNoiseAlgorithm());
 	}
 
 }

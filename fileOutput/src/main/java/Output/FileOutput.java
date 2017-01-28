@@ -1,7 +1,6 @@
 package Output;
 
 import Generator.SensorData;
-import Generator.SettingProvider;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -25,27 +24,18 @@ public class FileOutput {
 	private EXISTING handling;
 
 	/**
-	 * Initializes the object with the values of SettingProvider.
-	 * TODO: make handling configurable
+	 * Initializes the object with the given parameters.
+	 * @param settings The FileOutputSettingStore object.
 	 */
-	public FileOutput() {
-		this.filePath = SettingProvider.get().getFilePath();
-		this.buffer = new FileOutputBuffer();
-		this.handling = EXISTING.APPEND;
+	public FileOutput(FileOutputSettingStore settings) {
+		this.filePath = settings.getFileLocation();
+		this.buffer = new FileOutputBuffer(settings.getBufferSize());
+		this.handling = settings.getExistingFileHandling();
 		handleExistingFiles();
 	}
 
-	/**
-	 * Initializes the object with the given parameters.
-	 * @param filePath Where to save the output to.
-	 * @param buffer The FileOutputBuffer to use.
-	 * @param handling How to handle existing files.
-	 */
-	public FileOutput(Path filePath, FileOutputBuffer buffer, EXISTING handling) {
-		this.filePath = filePath;
-		this.buffer = buffer;
-		this.handling = handling;
-		handleExistingFiles();
+	protected FileOutputBuffer getBuffer() {
+		return this.buffer;
 	}
 
 	/**

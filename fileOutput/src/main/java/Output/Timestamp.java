@@ -8,5 +8,5 @@ public interface Timestamp {
 	 * Returns the string representation of the timestamp.
 	 * @return String
 	 */
-	String getString();
+	String toString();
 }
