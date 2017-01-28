@@ -1,4 +1,4 @@
-package Generator;
+package Output;
 
 /**
  * Interface for Timestamp classes. These objects are used to get timestamps for single SensorData objects when they are saved or sent.

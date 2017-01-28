@@ -1,4 +1,7 @@
-package Generator;
+package Output;
+
+import Generator.SensorData;
+import Generator.SettingProvider;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,7 +9,7 @@ import java.util.List;
 /**
  * Buffer for SensorData objects. May be created with a maximum size but it has to be enforced manually.
  */
-public class DataOutputBuffer {
+public class FileOutputBuffer {
 	private LinkedList<SensorData> buffer;
 	private int bufferCurrentSize;
 	private int bufferMaxSize;
@@ -15,7 +18,7 @@ public class DataOutputBuffer {
 	/**
 	 * Initializes the object with values from SettingProvider.
 	 */
-	public DataOutputBuffer() {
+	public FileOutputBuffer() {
 		this.bufferCurrentSize = 0;
 		this.buffer = new LinkedList<>();
 		this.timestamp = new SimpleCounterTimestamp();
@@ -25,7 +28,7 @@ public class DataOutputBuffer {
 	/**
 	 * Initializes the object with values from SettingProvider.
 	 */
-	public DataOutputBuffer(int bufferMaxSize) {
+	public FileOutputBuffer(int bufferMaxSize) {
 		this.bufferCurrentSize = 0;
 		this.buffer = new LinkedList<>();
 		this.timestamp = new SimpleCounterTimestamp();

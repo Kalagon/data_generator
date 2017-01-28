@@ -1,5 +1,7 @@
-package Generator;
+package Output;
 
+import Generator.SensorData;
+import Generator.SettingProvider;
 import Main.SettingStore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by oskar on 15/01/17.
  */
-class DataOutputBufferTest {
-	DataOutputBuffer testObject;
+class FileOutputBufferTest {
+	FileOutputBuffer testObject;
 
 	@BeforeAll
 	static void setUp() {
@@ -22,7 +24,7 @@ class DataOutputBufferTest {
 
 	@BeforeEach
 	void setUpEach() {
-		this.testObject = new DataOutputBuffer(2);
+		this.testObject = new FileOutputBuffer(2);
 	}
 
 	@Test
@@ -42,7 +44,7 @@ class DataOutputBufferTest {
 
 	@Test
 	void isEmpty() {
-		DataOutputBuffer testObject = new DataOutputBuffer();
+		FileOutputBuffer testObject = new FileOutputBuffer();
 		boolean result1 = testObject.isEmpty();
 		testObject.append(new SensorData(0.3f, 0.5f, "C"));
 		boolean result2 = testObject.isEmpty();

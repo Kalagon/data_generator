@@ -1,4 +1,6 @@
-package Generator;
+package Output;
+
+import Generator.SettingProvider;
 
 /**
  * Uses a simple counter for timestamps.

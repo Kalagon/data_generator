@@ -1,4 +1,7 @@
-package Generator;
+package Output;
+
+import Generator.SensorData;
+import Generator.SettingProvider;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -9,7 +12,7 @@ import java.nio.file.StandardOpenOption;
 /**
  * This class is used to handle storing the results. Using multiple objects of this class may cause issues if EXISTING.OVERWRITE is set and may shuffle the order of output lines.
  */
-public class DataOutput {
+public class FileOutput {
 	/**
 	 * Used to set how to handle existing files in the place of the output file.
 	 */
@@ -18,16 +21,16 @@ public class DataOutput {
 	}
 
 	private Path filePath;
-	private DataOutputBuffer buffer;
+	private FileOutputBuffer buffer;
 	private EXISTING handling;
 
 	/**
 	 * Initializes the object with the values of SettingProvider.
 	 * TODO: make handling configurable
 	 */
-	public DataOutput() {
+	public FileOutput() {
 		this.filePath = SettingProvider.get().getFilePath();
-		this.buffer = new DataOutputBuffer();
+		this.buffer = new FileOutputBuffer();
 		this.handling = EXISTING.APPEND;
 		handleExistingFiles();
 	}
@@ -35,10 +38,10 @@ public class DataOutput {
 	/**
 	 * Initializes the object with the given parameters.
 	 * @param filePath Where to save the output to.
-	 * @param buffer The DataOutputBuffer to use.
+	 * @param buffer The FileOutputBuffer to use.
 	 * @param handling How to handle existing files.
 	 */
-	public DataOutput(Path filePath, DataOutputBuffer buffer, EXISTING handling) {
+	public FileOutput(Path filePath, FileOutputBuffer buffer, EXISTING handling) {
 		this.filePath = filePath;
 		this.buffer = buffer;
 		this.handling = handling;

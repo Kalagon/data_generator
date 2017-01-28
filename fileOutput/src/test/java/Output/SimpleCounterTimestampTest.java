@@ -1,11 +1,10 @@
-package Generator;
+package Output;
 
+import Generator.SettingProvider;
 import Main.SettingStore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
