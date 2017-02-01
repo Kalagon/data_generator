@@ -6,10 +6,18 @@ package Main;
 public class RandomNoiseSettingStore implements NoiseSettingStore {
 	private int seed;
 	private float noiseFactor;
+	private int range;
 
-	public RandomNoiseSettingStore(int seed, float noiseFactor) {
+	public RandomNoiseSettingStore() {
+		this.seed = 98653489;
+		this.noiseFactor = 0.5f;
+		this.range = 5;
+	}
+
+	public RandomNoiseSettingStore(int seed, float noiseFactor, int range) {
 		this.seed = seed;
 		this.noiseFactor = noiseFactor;
+		this.range = range;
 	}
 
 	public int getSeed() {
@@ -44,5 +52,13 @@ public class RandomNoiseSettingStore implements NoiseSettingStore {
 			noiseFactor = 0;
 		}
 		return noiseFactor;
+	}
+
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
 	}
 }

@@ -1,11 +1,11 @@
-package Generator;
+package Main;
 
+import Generator.NoiseAlgorithm;
+import Generator.RandomNoiseAlgorithm;
+import Main.SettingProvider;
 import Main.SettingStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,28 +25,14 @@ class SettingProviderTest {
 	@Test
 	void getGeneratorSeed() {
 		int expected = 2345876;
-		int result = SettingProvider.get().getGeneratorSeed();
+		int result = SettingProvider.getSettingStore().getGeneratorSeed();
 		assertEquals(expected, result);
 	}
 
 	@Test
 	void getOutputSize() {
 		long expected = 1000;
-		long result = SettingProvider.get().getOutputSize();
-		assertEquals(expected, result);
-	}
-
-	@Test
-	void getFilePath() {
-		Path expected = Paths.get("output.txt");
-		Path result = SettingProvider.get().getFilePath();
-		assertEquals(expected, result);
-	}
-
-	@Test
-	void getBufferSize() {
-		int expected = 100;
-		int result = SettingProvider.get().getBufferSize();
+		long result = SettingProvider.getSettingStore().getOutputSize();
 		assertEquals(expected, result);
 	}
 
@@ -54,10 +40,8 @@ class SettingProviderTest {
 	void getNoiseAlgorithm() {
 		RandomNoiseAlgorithm expected = new RandomNoiseAlgorithm();
 		NoiseAlgorithm result = null;
-		try {
-			result = SettingProvider.get().getNoiseAlgorithm();
-		} catch(ReflectiveOperationException e) {
-		}
+		result = SettingProvider.getNoiseAlgorithm();
+
 		assertEquals(expected.getClass(), result.getClass());
 	}
 

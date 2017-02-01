@@ -1,5 +1,6 @@
 package Output;
 
+import Generator.DataOutput;
 import Generator.SensorData;
 
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.nio.file.StandardOpenOption;
 /**
  * This class is used to handle storing the results. Using multiple objects of this class may cause issues if EXISTING.OVERWRITE is set and may shuffle the order of output lines.
  */
-public class FileOutput {
+public class FileOutput implements DataOutput {
 	/**
 	 * Used to set how to handle existing files in the place of the output file.
 	 */
@@ -34,7 +35,7 @@ public class FileOutput {
 		handleExistingFiles();
 	}
 
-	protected FileOutputBuffer getBuffer() {
+	public FileOutputBuffer getBuffer() {
 		return this.buffer;
 	}
 

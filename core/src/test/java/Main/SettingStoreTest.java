@@ -12,11 +12,9 @@ class SettingStoreTest {
 	private SettingStore testObject;
 	private int testInt = 6;
 	private float testFloat = 3.5f;
-	private String testString = "/home/oskar/test/test";
 
 	@BeforeEach
 	void setUp() throws InvalidSettingException {
-
 		this.testObject = new SettingStore();
 	}
 
@@ -30,24 +28,6 @@ class SettingStoreTest {
 	void setGetOutputSize() {
 		testObject.setOutputSize(testInt);
 		assertEquals(testInt, testObject.getOutputSize());
-	}
-
-	@Test
-	void setGetFileLocation() {
-		try {
-			testObject.setFileLocation(testString);
-		} catch (InvalidSettingException e) {
-			System.out.println("Exception caught: " + e.getMessage());
-		}
-		assertEquals(testString, testObject.getFileLocation());
-	}
-
-	@Test
-	void setGetBufferSize() {
-		testObject.setBufferSize(testInt);
-		assertEquals(testInt, testObject.getBufferSize());
-		testObject.setBufferSize(-1);
-		assertEquals(0, testObject.getBufferSize());
 	}
 
 	@Test

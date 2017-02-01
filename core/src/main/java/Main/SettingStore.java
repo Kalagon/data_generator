@@ -1,40 +1,19 @@
 package Main;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.Serializable;
 
 /**
  * An Object of this class contains all user-selectable settings. This is used to initialize the generator.
  */
-public class SettingStore {
-	private int generatorSeed;
-	private long outputSize;
-	private String fileLocation;
-	private int bufferSize;
-	private NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm;
-	private NoiseSettingStore noiseSettings;
-
-	/**
-	 * Initializes the object with default values.
-	 */
-	public SettingStore() {
-		this.generatorSeed = 2345876;
-		this.outputSize = 1000;
-		this.fileLocation = "output.txt";
-		this.bufferSize = 100;
-		this.noiseAlgorithm = NoiseAlgorithmFactory.ALGORITHMS.RANDOM;
-		this.noiseSettings = new RandomNoiseSettingStore(98653489, 0.5f);
-	}
-
-	public SettingStore(int generatorSeed, int outputSize, String fileLocation, int bufferSize, NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm, NoiseSettingStore noiseSettings) throws InvalidSettingException {
-		this.setGeneratorSeed(generatorSeed);
-		this.setOutputSize(outputSize);
-		this.setFileLocation(fileLocation);
-		this.setBufferSize(bufferSize);
-		this.setNoiseAlgorithm(noiseAlgorithm);
-		this.setNoiseSettings(noiseSettings);
-	}
+public class SettingStore implements Serializable {
+	private int generatorSeed = 2345876;
+	private long outputSize = 1000;
+	private float rangeMin = 0f;
+	private float rangeMax = 100f;
+	private float precision = 0.5f;
+	private boolean precisionAndRangeRelative = true;
+	private NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm = NoiseAlgorithmFactory.ALGORITHMS.RANDOM;
+	private NoiseSettingStore noiseSettings = new RandomNoiseSettingStore();
 
 	public int getGeneratorSeed() {
 		return generatorSeed;
@@ -50,35 +29,6 @@ public class SettingStore {
 
 	public void setOutputSize(long outputSize) {
 		this.outputSize = outputSize;
-	}
-
-	public String getFileLocation() {
-		return fileLocation;
-	}
-
-	/**
-	 * Sets the file to write output to if possible.
-	 *
-	 * @param fileLocation The file to write to.
-	 * @throws InvalidSettingException If the location is not accessible or the file is not writable.
-	 */
-	public void setFileLocation(String fileLocation) throws InvalidSettingException {
-		if (pathIsAvailable(fileLocation)) {
-			this.fileLocation = fileLocation;
-		} else {
-			throw new InvalidSettingException("The file location is invalid or the file is not writable.", "invalidFileLocation");
-		}
-	}
-
-	public int getBufferSize() {
-		return bufferSize;
-	}
-
-	public void setBufferSize(int bufferSize) {
-		if (bufferSize < 0) {
-			bufferSize = 0;
-		}
-		this.bufferSize = bufferSize;
 	}
 
 	public NoiseAlgorithmFactory.ALGORITHMS getNoiseAlgorithm() {
@@ -98,19 +48,36 @@ public class SettingStore {
 	}
 
 	/**
-	 * Checks if a path is accessible to the program.
-	 *
-	 * @param fileLocation The path to check.
-	 * @return True if file exists and is writable or file does not exist yet.
+	 * Sets rangeMin and rangeMax.
+	 * @param min
+	 * @param max
 	 */
-	private boolean pathIsAvailable(String fileLocation) {
-		boolean result = false;
-		Path pathToCheck = Paths.get(fileLocation);
-		boolean exists = Files.exists(pathToCheck);
-		boolean notExists = Files.notExists(pathToCheck);
-		if ( notExists || (exists && Files.isRegularFile(pathToCheck) && Files.isWritable(pathToCheck)) ) {
-			result = true;
-		}
-		return result;
+	public void setRange(float min, float max) {
+		this.rangeMin = min;
+		this.rangeMax = max;
+	}
+
+	public float getRangeMin() {
+		return rangeMin;
+	}
+
+	public float getRangeMax() {
+		return rangeMax;
+	}
+
+	public float getPrecision() {
+		return precision;
+	}
+
+	public void setPrecision(float precision) {
+		this.precision = precision;
+	}
+
+	public boolean isPrecisionAndRangeRelative() {
+		return precisionAndRangeRelative;
+	}
+
+	public void setPrecisionAndRangeRelative(boolean precisionAndRangeRelative) {
+		this.precisionAndRangeRelative = precisionAndRangeRelative;
 	}
 }

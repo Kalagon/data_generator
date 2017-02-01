@@ -1,5 +1,8 @@
 package Generator;
 
+import Main.SettingProvider;
+import Main.SettingStore;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,12 +11,17 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by oskar on 29.12.16.
  */
-class TemperatureSensorTest {
-	private TemperatureSensor testObject;
+class SensorTest {
+	private Sensor testObject;
+
+	@BeforeAll
+	static void setUpOnce() {
+		SettingProvider.set(new SettingStore());
+	}
 
 	@BeforeEach
 	void setUp() {
-		testObject = new TemperatureSensor(null);
+		testObject = new Sensor(null, null, Sensor.TYPE.TEMPERATURE);
 	}
 
 	@Test

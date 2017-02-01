@@ -4,8 +4,6 @@ import Main.RandomNoiseSettingStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -19,7 +17,7 @@ class RandomNoiseAlgorithmTest {
 	@BeforeEach
 	void setUp() {
 		testObject = new RandomNoiseAlgorithm();
-		RandomNoiseSettingStore settings = new RandomNoiseSettingStore(7685, 0.8f);
+		RandomNoiseSettingStore settings = new RandomNoiseSettingStore(7685, 0.8f, 5);
 		testObject.setUp(settings);
 	}
 

@@ -1,14 +1,9 @@
 package Output;
 
 import Generator.SensorData;
-import Generator.SettingProvider;
-import Main.SettingStore;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

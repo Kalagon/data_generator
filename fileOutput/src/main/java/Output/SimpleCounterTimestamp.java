@@ -1,7 +1,6 @@
 package Output;
 
-import Generator.SettingProvider;
-import Main.SettingStore;
+import Main.SettingProvider;
 
 /**
  * Uses a simple counter for timestamps.
