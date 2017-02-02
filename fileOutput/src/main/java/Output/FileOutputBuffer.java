@@ -36,7 +36,7 @@ public class FileOutputBuffer {
 
 	/**
 	 * Checks if the buffer is full.
-	 * @return true if there are at least as many items in the buffer as the set maximum.
+	 * @return true if there are at least as many items in the buffer as the setSettingStore maximum.
 	 */
 	public boolean isFull() {
 		boolean result = true;

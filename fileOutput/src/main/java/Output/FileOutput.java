@@ -10,11 +10,11 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
 /**
- * This class is used to handle storing the results. Using multiple objects of this class may cause issues if EXISTING.OVERWRITE is set and may shuffle the order of output lines.
+ * This class is used to handle storing the results. Using multiple objects of this class may cause issues if EXISTING.OVERWRITE is setSettingStore and may shuffle the order of output lines.
  */
 public class FileOutput implements DataOutput {
 	/**
-	 * Used to set how to handle existing files in the place of the output file.
+	 * Used to setSettingStore how to handle existing files in the place of the output file.
 	 */
 	public enum EXISTING {
 		OVERWRITE, APPEND
@@ -52,7 +52,7 @@ public class FileOutput implements DataOutput {
 	}
 
 	/**
-	 * Writes the contents of the buffer to the set file. Appends lines.
+	 * Writes the contents of the buffer to the setSettingStore file. Appends lines.
 	 * @throws IOException In case writing to the file fails.
 	 */
 	public void writeToFile() throws  IOException {
@@ -60,7 +60,7 @@ public class FileOutput implements DataOutput {
 	}
 
 	/**
-	 * Deletes existing files in the place of the selected output file if EXISTING.OVERWRITE is set.
+	 * Deletes existing files in the place of the selected output file if EXISTING.OVERWRITE is setSettingStore.
 	 */
 	private void handleExistingFiles() {
 		if (this.handling == EXISTING.OVERWRITE) {

@@ -1,10 +1,13 @@
 package Generator;
 
+import Main.RandomNoiseSettingStore;
 import Main.SettingProvider;
 import Main.SettingStore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,12 +19,14 @@ class SensorTest {
 
 	@BeforeAll
 	static void setUpOnce() {
-		SettingProvider.set(new SettingStore());
+		SettingProvider.setSettingStore(new SettingStore());
 	}
 
 	@BeforeEach
 	void setUp() {
-		testObject = new Sensor(null, null, Sensor.TYPE.TEMPERATURE);
+		RandomNoiseAlgorithm noiseAlgorithm = new RandomNoiseAlgorithm();
+		noiseAlgorithm.setUp(new RandomNoiseSettingStore());
+		testObject = new Sensor(new Random(), noiseAlgorithm, Sensor.TYPE.TEMPERATURE);
 	}
 
 	@Test

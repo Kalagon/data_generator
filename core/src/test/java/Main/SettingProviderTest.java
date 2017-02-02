@@ -2,8 +2,6 @@ package Main;
 
 import Generator.NoiseAlgorithm;
 import Generator.RandomNoiseAlgorithm;
-import Main.SettingProvider;
-import Main.SettingStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +16,7 @@ class SettingProviderTest {
 	@BeforeEach
 	void setUp() {
 		SettingStore settings = new SettingStore();
-		SettingProvider.set(settings);
+		SettingProvider.setSettingStore(settings);
 		testObject = SettingProvider.get();
 	}
 

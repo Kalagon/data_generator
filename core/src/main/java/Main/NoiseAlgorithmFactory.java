@@ -1,11 +1,12 @@
 package Main;
 
 import Generator.NoiseAlgorithm;
+import Generator.RandomNoiseAlgorithm;
 
 import java.util.HashMap;
 
 /**
- * Contains all possible NoiseAlgorithms. Provides tools for listing, checking and creating.
+ * Contains an enum of all possible NoiseAlgorithms. Used to create instances of NoiseAlgorithms.
  */
 public class NoiseAlgorithmFactory {
 
@@ -17,39 +18,20 @@ public class NoiseAlgorithmFactory {
 	}
 
 	/**
-	 * Maps the constants to the class names.
-	 */
-	private static final HashMap<ALGORITHMS, String> NAMES;
-	static {
-		HashMap<ALGORITHMS, String> tmp = new HashMap<>();
-		tmp.put(ALGORITHMS.RANDOM, "RandomNoiseAlgorithm");
-		NAMES = tmp;
-	}
-
-	/**
-	 * The package name.
-	 */
-	private static final String PREFIX = "Generator.";
-
-	/**
-	 * Returns the name of the class  belonging to the given algorithm.
-	 * @param key The constant defining the NoiseAlgorithm.
-	 * @return The name of the class.
-	 */
-	public static String getName(ALGORITHMS key) {
-		return NAMES.get(key);
-	}
-
-	/**
-	 * Returns an instance of the set NoiseAlgorithm. Uses reflection.
+	 * Returns an instance of the set NoiseAlgorithm.
 	 * @param key The constant defining the NoiseAlgorithm.
 	 * @return The NoiseAlgorithm object.
-	 * @throws ReflectiveOperationException If the class cannot be found, cast or created.
 	 */
-	public static NoiseAlgorithm getInstanceOf(ALGORITHMS key) throws ReflectiveOperationException {
-		String className = PREFIX + getName(key);
-		Class<?> cls = Class.forName(className);
-		return (NoiseAlgorithm) cls.getConstructor().newInstance();
+	public static NoiseAlgorithm getInstanceOf(ALGORITHMS key) {
+		NoiseAlgorithm result = null;
+		switch (key) {
+			case RANDOM:
+				result = new RandomNoiseAlgorithm();
+				break;
+			default:
+				break;
+		}
+		return result;
 	}
 
 }

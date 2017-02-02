@@ -48,11 +48,16 @@ public class SettingStore implements Serializable {
 	}
 
 	/**
-	 * Sets rangeMin and rangeMax.
+	 * Sets rangeMin and rangeMax. Ensures that max > min.
 	 * @param min
 	 * @param max
 	 */
 	public void setRange(float min, float max) {
+		if (min > max) {
+			float tmp = min;
+			min = max;
+			max = tmp;
+		}
 		this.rangeMin = min;
 		this.rangeMax = max;
 	}
