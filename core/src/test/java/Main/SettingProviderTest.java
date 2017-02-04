@@ -37,7 +37,7 @@ class SettingProviderTest {
 	@Test
 	void getNoiseAlgorithm() {
 		RandomNoiseAlgorithm expected = new RandomNoiseAlgorithm();
-		NoiseAlgorithm result = null;
+		NoiseAlgorithm result;
 		result = SettingProvider.getNoiseAlgorithm();
 
 		assertEquals(expected.getClass(), result.getClass());

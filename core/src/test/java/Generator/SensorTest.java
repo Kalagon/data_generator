@@ -32,7 +32,7 @@ class SensorTest {
 	@Test
 	void getData() {
 		SensorData result = testObject.getData();
-		assertTrue(result instanceof SensorData);
+		assertTrue(result != null);
 	}
 
 }

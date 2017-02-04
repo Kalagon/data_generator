@@ -42,12 +42,15 @@ public class FileOutput implements DataOutput {
 	/**
 	 * Store a SensorData object in the buffer. If the buffer is full its contents will be written to disk.
 	 * @param inputObject The object to store.
-	 * @throws IOException In case writing to the file fails.
 	 */
-	public void save(SensorData inputObject) throws IOException {
+	public void save(SensorData inputObject) {
 		this.buffer.append(inputObject);
 		if (this.buffer.isFull()) {
-			this.writeToFile();
+			try {
+				this.writeToFile();
+			} catch (IOException e) {
+				System.exit(2);
+			}
 		}
 	}
 

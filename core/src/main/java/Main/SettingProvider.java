@@ -3,6 +3,8 @@ package Main;
 import Generator.DataOutput;
 import Generator.NoiseAlgorithm;
 
+import java.util.Random;
+
 /**
  * A singleton for settings retrieving. This object is used to access the settings and create the necessary objects. Complex global objects like the NoiseAlgorithm and the DataOutput are stored directly inside the SettingProvider object.
  */
@@ -11,6 +13,7 @@ public class SettingProvider {
 	private SettingStore settings;
 	private DataOutput outputHandler;
 	private NoiseAlgorithm noiseAlgorithm;
+	private Random rng;
 
 	/**
 	 * Private to restrict creation to the static methods.
@@ -34,13 +37,11 @@ public class SettingProvider {
 	}
 
 	/**
-	 * Creates a new SettingProvider with the given settings. This can only be done once. On consequent calls it will silently fail.
+	 * Creates a new SettingProvider with the given settings.
 	 * @param settings The settings object.
 	 */
 	public static void setSettingStore(SettingStore settings) {
-		if (instance == null) {
-			instance = new SettingProvider(settings);
-		}
+		instance = new SettingProvider(settings);
 	}
 
 	/**
@@ -52,14 +53,23 @@ public class SettingProvider {
 	}
 
 	/**
-	 * Creates the concrete object of a subclass of NoiseAlgorithm if needed and returns it.
+	 * Creates the concrete, completely set up object of a subclass of NoiseAlgorithm if needed and returns it.
 	 * @return The NoiseAlgorithm.
 	 */
 	public static NoiseAlgorithm getNoiseAlgorithm() {
 		if (instance.noiseAlgorithm == null) {
 			instance.noiseAlgorithm = NoiseAlgorithmFactory.getInstanceOf(instance.settings.getNoiseAlgorithm());
+			instance.noiseAlgorithm.setUp(instance.settings.getNoiseSettings());
 		}
 		return instance.noiseAlgorithm;
+	}
+
+	/**
+	 * Can be used to set the noiseAlgorithm to be used in the generator. If it is not set this way it will be created on first retrieval.
+	 * @param noiseAlgorithm
+	 */
+	public static void setNoiseAlgorithm(NoiseAlgorithm noiseAlgorithm) {
+		instance.noiseAlgorithm = noiseAlgorithm;
 	}
 
 	/**
@@ -76,5 +86,24 @@ public class SettingProvider {
 	 */
 	public static void setOutputHandler(DataOutput outputHandler) {
 		instance.outputHandler = outputHandler;
+	}
+
+	/**
+	 * Returns the random number generator to be used. Creates a default Random object with the set seed if needed.
+	 * @return Random
+	 */
+	public static Random getRng() {
+		if (instance.rng == null) {
+			instance.rng = new Random(instance.settings.getGeneratorSeed());
+		}
+		return instance.rng;
+	}
+
+	/**
+	 * Can be used to set the Random object to use in the generator. If its not set this way it will be created automatically on first retrieval.
+	 * @param rng The Random object to use.
+	 */
+	public static void setRng(Random rng) {
+		instance.rng = rng;
 	}
 }

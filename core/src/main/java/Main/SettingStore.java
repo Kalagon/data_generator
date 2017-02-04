@@ -1,5 +1,7 @@
 package Main;
 
+import Generator.Sensor;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +14,7 @@ public class SettingStore implements Serializable {
 	private float rangeMax = 100f;
 	private float precision = 0.5f;
 	private boolean precisionAndRangeRelative = true;
+	private Sensor.TYPE[] sensorTypes = { Sensor.TYPE.TEMPERATURE };
 	private NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm = NoiseAlgorithmFactory.ALGORITHMS.RANDOM;
 	private NoiseSettingStore noiseSettings = new RandomNoiseSettingStore();
 
@@ -84,5 +87,13 @@ public class SettingStore implements Serializable {
 
 	public void setPrecisionAndRangeRelative(boolean precisionAndRangeRelative) {
 		this.precisionAndRangeRelative = precisionAndRangeRelative;
+	}
+
+	public Sensor.TYPE[] getSensorTypes() {
+		return sensorTypes;
+	}
+
+	public void setSensorTypes(Sensor.TYPE[] sensorTypes) {
+		this.sensorTypes = sensorTypes;
 	}
 }

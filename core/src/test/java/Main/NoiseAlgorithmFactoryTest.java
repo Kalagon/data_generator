@@ -14,7 +14,7 @@ class NoiseAlgorithmFactoryTest {
 	@Test
 	void getInstanceOf() {
 		RandomNoiseAlgorithm expected = new RandomNoiseAlgorithm();
-		NoiseAlgorithm result = null;
+		NoiseAlgorithm result;
 		result = NoiseAlgorithmFactory.getInstanceOf(NoiseAlgorithmFactory.ALGORITHMS.RANDOM);
 		assertEquals(expected.getClass(), result.getClass());
 	}

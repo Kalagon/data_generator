@@ -48,7 +48,7 @@ public class FileOutputBuffer {
 
 	/**
 	 * Checks if the buffer is empty.
-	 * @return true if theere are no objects in the buffer.
+	 * @return true if there are no objects in the buffer.
 	 */
 	public boolean isEmpty() {
 		return buffer.isEmpty();

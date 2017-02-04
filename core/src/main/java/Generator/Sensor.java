@@ -12,7 +12,7 @@ public class Sensor {
 	/**
 	 * The types of sensors implemented. Each type corresponds to a SensorDataSupplier used to create SensorData objects.
 	 */
-	enum TYPE {
+	public enum TYPE {
 		TEMPERATURE,
 	}
 

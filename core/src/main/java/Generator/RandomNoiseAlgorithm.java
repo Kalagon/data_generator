@@ -20,7 +20,7 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 	 */
 	@Override
 	public void setUp(NoiseSettingStore settings) {
-		assert(settings instanceof RandomNoiseSettingStore); //TODO: remove once the check is implemented
+		assert(settings instanceof RandomNoiseSettingStore);
 		RandomNoiseSettingStore tmpSettings = (RandomNoiseSettingStore) settings;
 		this.rng = new Random(tmpSettings.getSeed());
 		this.noiseFactor = tmpSettings.getNoiseFactor();
@@ -38,8 +38,8 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 		int result = inputValue;
 		boolean applyNoise = (rng.nextFloat() <= noiseFactor);
 		if (applyNoise) {
-			int noiseValue = rng.nextInt(this.range);
-			result = (rng.nextBoolean() ? inputValue + noiseValue : inputValue - noiseValue);
+			int noiseValue = rng.nextInt(this.range * 2);
+			result = ( inputValue + ( noiseValue - this.range ) );
 		}
 		return result;
 	}
@@ -55,8 +55,8 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 		float result = inputValue;
 		boolean applyNoise = (rng.nextFloat() <= noiseFactor);
 		if (applyNoise) {
-			float noiseValue = rng.nextInt(this.range) + rng.nextFloat();
-			result = (rng.nextBoolean() ? inputValue + noiseValue : inputValue - noiseValue);
+			float noiseValue = rng.nextInt(this.range * 2) + rng.nextFloat();
+			result = ( inputValue + ( noiseValue - this.range ) );
 		}
 		return result;
 	}

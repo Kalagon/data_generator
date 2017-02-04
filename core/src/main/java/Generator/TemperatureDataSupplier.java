@@ -30,21 +30,31 @@ public class TemperatureDataSupplier implements SensorDataSupplier {
 		this.precisionSetting = settings.getPrecision();
 	}
 
-
 	/**
 	 * Generates the SensorData object.
  	 * @return The finished data object.
 	 */
 	@Override
 	public SensorData get() {
-		float current = this.rng.nextInt(this.rangeDelta) + this.rng.nextFloat();
-		current = this.rangeMin + this.noiseAlgorithm.addNoise(current);
-		String unit = "°C";
+		String unit;
+		float current = generateCurrent();
 		if (this.rng.nextBoolean()) {
 			unit = "°F";
-			current = ( 32f + ( current * 1.8f ) );
+			current = cToF(current);
+		} else {
+			unit = "°C";
 		}
 		float precision = this.precisionSetting;
 		return new SensorData(current, precision, unit);
+	}
+
+	private float generateCurrent() {
+		float current = this.rng.nextInt(this.rangeDelta) + this.rng.nextFloat();
+		current = this.rangeMin + this.noiseAlgorithm.addNoise(current);
+		return current;
+	}
+
+	private float cToF(float celsiusVal) {
+		return ( 32f + ( celsiusVal * 1.8f ) );
 	}
 }
