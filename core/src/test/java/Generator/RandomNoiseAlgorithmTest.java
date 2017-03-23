@@ -4,7 +4,7 @@ import Main.RandomNoiseSettingStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class RandomNoiseAlgorithmTest {
 	private RandomNoiseAlgorithm testObject;

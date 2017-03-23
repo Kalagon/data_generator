@@ -1,9 +1,11 @@
 package Main;
 
+import java.io.Serializable;
+
 /**
  * Stores all settings needed for a RandomNoiseAlgorithm.
  */
-public class RandomNoiseSettingStore implements NoiseSettingStore {
+public class RandomNoiseSettingStore implements NoiseSettingStore, Serializable {
 	private int seed;
 	private float noiseFactor;
 	private int range;

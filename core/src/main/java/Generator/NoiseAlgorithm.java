@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Base interface for all NoiseCalculators.
  */
-public interface NoiseAlgorithm {
+public interface NoiseAlgorithm extends Serializable {
 	/**
 	 * Fills the blank object with the correct values based on the given settings.
 	 * @param settings The requested settings.

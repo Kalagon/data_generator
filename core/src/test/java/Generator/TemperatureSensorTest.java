@@ -1,8 +1,6 @@
 package Generator;
 
-import Main.SettingProvider;
 import Main.SettingStore;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TemperatureSensorTest {
 	private Sensor testObject;
-
-	@BeforeAll
-	static void setUpOnce() {
-		SettingProvider.setSettingStore(new SettingStore());
-	}
 
 	@BeforeEach
 	void setUp() {

@@ -1,6 +1,5 @@
 package Generator;
 
-import Main.SettingProvider;
 import Main.SettingStore;
 
 import java.util.Random;

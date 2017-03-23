@@ -24,6 +24,10 @@ public class SettingProvider {
 	 * @return The object.
 	 */
 	public static SettingProvider get() {
+		if (instance == null) {
+			System.out.println("No SettingProvider set. Creating.");
+			instance = new SettingProvider();
+		}
 		return instance;
 	}
 
@@ -41,6 +45,11 @@ public class SettingProvider {
 	 * @return The SettingStore object currently in use.
 	 */
 	public static SettingStore getSettingStore() {
+		if (instance == null) {
+			System.out.println("No configuration set. Using defaults.");
+			instance = new SettingProvider();
+			instance.settings = new SettingStore();
+		}
 		return instance.settings;
 	}
 

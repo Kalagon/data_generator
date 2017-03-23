@@ -70,8 +70,16 @@ public class SettingStore implements Serializable {
 		return rangeMin;
 	}
 
+	public void setRangeMin(float rangeMin) {
+		this.rangeMin = rangeMin;
+	}
+
 	public float getRangeMax() {
 		return rangeMax;
+	}
+
+	public void setRangeMax(float rangeMax) {
+		this.rangeMax = rangeMax;
 	}
 
 	public float getPrecision() {
