@@ -1,6 +1,5 @@
 package Main;
 
-import Generator.DataOutput;
 import Generator.NoiseAlgorithm;
 
 import java.util.Random;
@@ -13,20 +12,12 @@ public class SettingProvider {
 	private SettingStore settings;
 	private DataOutput outputHandler;
 	private NoiseAlgorithm noiseAlgorithm;
-	private Random rng;
+	private Random randomNumberGenerator;
 
 	/**
 	 * Private to restrict creation to the static methods.
 	 */
 	private SettingProvider() {}
-
-	/**
-	 * For use by setSettingStore() only.
-	 * @param settings The settings object.
-	 */
-	private SettingProvider(SettingStore settings) {
-		this.settings = settings;
-	}
 
 	/**
 	 * Returns the SettingProvider object.
@@ -41,7 +32,8 @@ public class SettingProvider {
 	 * @param settings The settings object.
 	 */
 	public static void setSettingStore(SettingStore settings) {
-		instance = new SettingProvider(settings);
+		instance = new SettingProvider();
+		instance.settings = settings;
 	}
 
 	/**
@@ -58,14 +50,15 @@ public class SettingProvider {
 	 */
 	public static NoiseAlgorithm getNoiseAlgorithm() {
 		if (instance.noiseAlgorithm == null) {
-			instance.noiseAlgorithm = NoiseAlgorithmFactory.getInstanceOf(instance.settings.getNoiseAlgorithm());
-			instance.noiseAlgorithm.setUp(instance.settings.getNoiseSettings());
+			instance.noiseAlgorithm = NoiseAlgorithmFactory.createNoiseAlgorithm(instance.settings.getNoiseAlgorithm());
+			instance.noiseAlgorithm.setup(instance.settings.getNoiseSettings());
 		}
 		return instance.noiseAlgorithm;
 	}
 
 	/**
 	 * Can be used to set the noiseAlgorithm to be used in the generator. If it is not set this way it will be created on first retrieval.
+	 * Should only be used for testing.
 	 * @param noiseAlgorithm
 	 */
 	public static void setNoiseAlgorithm(NoiseAlgorithm noiseAlgorithm) {
@@ -92,18 +85,19 @@ public class SettingProvider {
 	 * Returns the random number generator to be used. Creates a default Random object with the set seed if needed.
 	 * @return Random
 	 */
-	public static Random getRng() {
-		if (instance.rng == null) {
-			instance.rng = new Random(instance.settings.getGeneratorSeed());
+	public static Random getRandomNumberGenerator() {
+		if (instance.randomNumberGenerator == null) {
+			instance.randomNumberGenerator = new Random(instance.settings.getRandomNumberGeneratorSeed());
 		}
-		return instance.rng;
+		return instance.randomNumberGenerator;
 	}
 
 	/**
 	 * Can be used to set the Random object to use in the generator. If its not set this way it will be created automatically on first retrieval.
+	 * Should only be used for testing.
 	 * @param rng The Random object to use.
 	 */
-	public static void setRng(Random rng) {
-		instance.rng = rng;
+	public static void setRandomNumberGenerator(Random rng) {
+		instance.randomNumberGenerator = rng;
 	}
 }

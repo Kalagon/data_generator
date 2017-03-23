@@ -12,7 +12,7 @@ public interface NoiseAlgorithm {
 	 * Fills the blank object with the correct values based on the given settings.
 	 * @param settings The requested settings.
 	 */
-	void setUp(NoiseSettingStore settings);
+	void setup(NoiseSettingStore settings);
 
 	/**
 	 * Used to add noise to an integer value.

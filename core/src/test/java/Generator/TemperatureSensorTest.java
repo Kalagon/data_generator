@@ -1,20 +1,14 @@
 package Generator;
 
-import Main.RandomNoiseSettingStore;
 import Main.SettingProvider;
 import Main.SettingStore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-/**
- * Created by oskar on 29.12.16.
- */
-class SensorTest {
+class TemperatureSensorTest {
 	private Sensor testObject;
 
 	@BeforeAll
@@ -24,15 +18,15 @@ class SensorTest {
 
 	@BeforeEach
 	void setUp() {
-		RandomNoiseAlgorithm noiseAlgorithm = new RandomNoiseAlgorithm();
-		noiseAlgorithm.setUp(new RandomNoiseSettingStore());
-		testObject = new Sensor(new Random(), noiseAlgorithm, Sensor.TYPE.TEMPERATURE);
+		testObject = new TemperatureSensor();
+		testObject.setup(new RandomMock(), new RandomNoiseAlgorithmMock(), new SettingStore());
 	}
 
 	@Test
 	void getData() {
+		String expected = "currentValue:5.0,precision:0.5,measurementUnit:°F";
 		SensorData result = testObject.getData();
-		assertTrue(result != null);
+ 		assertEquals(expected, result.toString());
 	}
 
 }

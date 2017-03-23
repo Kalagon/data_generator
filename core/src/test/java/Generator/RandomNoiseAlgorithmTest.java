@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by oskar on 30.12.16.
- */
 class RandomNoiseAlgorithmTest {
 	private RandomNoiseAlgorithm testObject;
 	private int inputInt = 13;
@@ -18,7 +15,7 @@ class RandomNoiseAlgorithmTest {
 	void setUp() {
 		testObject = new RandomNoiseAlgorithm();
 		RandomNoiseSettingStore settings = new RandomNoiseSettingStore(7685, 0.8f, 5);
-		testObject.setUp(settings);
+		testObject.setup(settings);
 	}
 
 	@Test

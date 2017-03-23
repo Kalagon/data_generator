@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by oskar on 04.01.17.
- */
 class SettingProviderTest {
 	private SettingProvider testObject;
 
@@ -23,7 +20,7 @@ class SettingProviderTest {
 	@Test
 	void getGeneratorSeed() {
 		int expected = 2345876;
-		int result = SettingProvider.getSettingStore().getGeneratorSeed();
+		int result = SettingProvider.getSettingStore().getRandomNumberGeneratorSeed();
 		assertEquals(expected, result);
 	}
 

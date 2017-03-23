@@ -1,7 +1,7 @@
 package Output;
 
-import Generator.DataOutput;
-import Generator.SensorData;
+import Generator.SimpleSensorData;
+import Main.DataOutput;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -40,10 +40,10 @@ public class FileOutput implements DataOutput {
 	}
 
 	/**
-	 * Store a SensorData object in the buffer. If the buffer is full its contents will be written to disk.
+	 * Store a SimpleSensorData object in the buffer. If the buffer is full its contents will be written to disk.
 	 * @param inputObject The object to store.
 	 */
-	public void save(SensorData inputObject) {
+	public void save(SimpleSensorData inputObject) {
 		this.buffer.append(inputObject);
 		if (this.buffer.isFull()) {
 			try {

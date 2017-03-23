@@ -1,5 +1,6 @@
 package Generator;
 
+import Main.DataOutput;
 import Main.SettingProvider;
 
 import java.util.Random;
@@ -24,15 +25,15 @@ public class Generator {
 	}
 
 	/**
-	 * Creates the list of sensors which will be used to generate the SensorData. Creates one sensor per requested type.
+	 * Creates the list of sensors which will be used to generate the SimpleSensorData. Creates one sensor per requested type.
 	 */
 	private void initializeSensorList() {
-		Random rng = SettingProvider.getRng();
+		Random rng = SettingProvider.getRandomNumberGenerator();
 		NoiseAlgorithm noiseAlgorithm = SettingProvider.getNoiseAlgorithm();
-		Sensor.TYPE[] sensorTypes = SettingProvider.getSettingStore().getSensorTypes();
+		SensorFactory.TYPE[] sensorTypes = SettingProvider.getSettingStore().getSensorTypes();
 		this.sensorList = new Sensor[sensorTypes.length];
 		for (int i = 0; i < sensorTypes.length; i++) {
-			this.sensorList[i] = new Sensor(rng, noiseAlgorithm, sensorTypes[i]);
+			this.sensorList[i] = SensorFactory.createSensor(sensorTypes[i]);
 		}
 	}
 
@@ -52,7 +53,7 @@ public class Generator {
 	}
 
 	/**
-	 * Loops through the list of sensors for the set amount of times to generate the SensorData objects and passes them to the DataOutput one by one.
+	 * Loops through the list of sensors for the set amount of times to generate the SimpleSensorData objects and passes them to the DataOutput one by one.
 	 */
 	public void execute() {
 		Sensor currentSensor;

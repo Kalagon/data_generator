@@ -1,13 +1,14 @@
 package Generator;
 
+import Main.SettingProvider;
 import Main.SettingStore;
 
 import java.util.Random;
 
 /**
- * Generates SensorData objects filled with temperature data.
+ * This class is used for objects that create the SimpleSensorData. Can have different types, which are implemented inside this class.
  */
-public class TemperatureDataSupplier implements SensorDataSupplier {
+public class TemperatureSensor implements Sensor {
 
 	private float rangeMin;
 	private int rangeDelta;
@@ -15,7 +16,13 @@ public class TemperatureDataSupplier implements SensorDataSupplier {
 	private Random rng;
 	private NoiseAlgorithm noiseAlgorithm;
 
-	public TemperatureDataSupplier(Random rng, NoiseAlgorithm noiseAlgorithm, SettingStore settings) {
+	/**
+	 * Sets up the whole object. Required before any data can be generated.
+	 * @param rng The Random object to use for retrieval of base numbers.
+	 * @param noiseAlgorithm The NoiseAlgorithm that should transform numbers.
+	 * @param settings SettingStore object used for additional setup of settings.
+	 */
+	public void setup(Random rng, NoiseAlgorithm noiseAlgorithm, SettingStore settings) {
 		this.rng = rng;
 		this.noiseAlgorithm = noiseAlgorithm;
 		float rangeMin = settings.getRangeMin();
@@ -31,11 +38,10 @@ public class TemperatureDataSupplier implements SensorDataSupplier {
 	}
 
 	/**
-	 * Generates the SensorData object.
- 	 * @return The finished data object.
+	 * This method returns a complete SimpleSensorData object.
+	 * @return SimpleSensorData
 	 */
-	@Override
-	public SensorData get() {
+	public SensorData getData() {
 		String unit;
 		float current = generateCurrent();
 		if (this.rng.nextBoolean()) {
@@ -45,15 +51,24 @@ public class TemperatureDataSupplier implements SensorDataSupplier {
 			unit = "°C";
 		}
 		float precision = this.precisionSetting;
-		return new SensorData(current, precision, unit);
+		return new SimpleSensorData(current, precision, unit);
 	}
 
+	/**
+	 * Generates the value to be used as "currentValue" in the SensorData object.
+	 * @return float The final value.
+	 */
 	private float generateCurrent() {
 		float current = this.rng.nextInt(this.rangeDelta) + this.rng.nextFloat();
 		current = this.rangeMin + this.noiseAlgorithm.addNoise(current);
 		return current;
 	}
 
+	/**
+	 * Converts values from Celsius to Farenheit.
+	 * @param celsiusVal The value in Celsius.
+	 * @return float The value in Farenheit.
+	 */
 	private float cToF(float celsiusVal) {
 		return ( 32f + ( celsiusVal * 1.8f ) );
 	}

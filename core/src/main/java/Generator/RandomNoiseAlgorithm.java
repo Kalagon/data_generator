@@ -19,7 +19,7 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 	 * @param settings The requested settings.
 	 */
 	@Override
-	public void setUp(NoiseSettingStore settings) {
+	public void setup(NoiseSettingStore settings) {
 		assert(settings instanceof RandomNoiseSettingStore);
 		RandomNoiseSettingStore tmpSettings = (RandomNoiseSettingStore) settings;
 		this.rng = new Random(tmpSettings.getSeed());

@@ -1,7 +1,7 @@
 package Output;
 
 /**
- * Interface for Timestamp classes. These objects are used to get timestamps for single SensorData objects when they are saved or sent.
+ * Interface for Timestamp classes. These objects are used to get timestamps for single SimpleSensorData objects when they are saved or sent.
  */
 public interface Timestamp {
 	/**

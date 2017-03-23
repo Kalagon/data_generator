@@ -1,6 +1,7 @@
 package Main;
 
 import Generator.Sensor;
+import Generator.SensorFactory;
 
 import java.io.Serializable;
 
@@ -8,22 +9,22 @@ import java.io.Serializable;
  * An Object of this class contains all user-selectable settings. This is used to initialize the generator.
  */
 public class SettingStore implements Serializable {
-	private int generatorSeed = 2345876;
+	private int randomNumberGeneratorSeed = 2345876;
 	private long outputSize = 1000;
 	private float rangeMin = 0f;
 	private float rangeMax = 100f;
 	private float precision = 0.5f;
 	private boolean precisionAndRangeRelative = true;
-	private Sensor.TYPE[] sensorTypes = { Sensor.TYPE.TEMPERATURE };
+	private SensorFactory.TYPE[] sensorTypes = { SensorFactory.TYPE.TEMPERATURE };
 	private NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm = NoiseAlgorithmFactory.ALGORITHMS.RANDOM;
 	private NoiseSettingStore noiseSettings = new RandomNoiseSettingStore();
 
-	public int getGeneratorSeed() {
-		return generatorSeed;
+	public int getRandomNumberGeneratorSeed() {
+		return randomNumberGeneratorSeed;
 	}
 
-	public void setGeneratorSeed(int generatorSeed) {
-		this.generatorSeed = generatorSeed;
+	public void setRandomNumberGeneratorSeed(int randomNumberGeneratorSeed) {
+		this.randomNumberGeneratorSeed = randomNumberGeneratorSeed;
 	}
 
 	public long getOutputSize() {
@@ -89,11 +90,11 @@ public class SettingStore implements Serializable {
 		this.precisionAndRangeRelative = precisionAndRangeRelative;
 	}
 
-	public Sensor.TYPE[] getSensorTypes() {
+	public SensorFactory.TYPE[] getSensorTypes() {
 		return sensorTypes;
 	}
 
-	public void setSensorTypes(Sensor.TYPE[] sensorTypes) {
+	public void setSensorTypes(SensorFactory.TYPE[] sensorTypes) {
 		this.sensorTypes = sensorTypes;
 	}
 }

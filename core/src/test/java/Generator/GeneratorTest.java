@@ -9,9 +9,6 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by oskar on 02/02/17.
- */
 class GeneratorTest {
 	private DataOutputMock mockOutput;
 	private Generator testObject;
@@ -25,16 +22,16 @@ class GeneratorTest {
 		SettingProvider.setSettingStore(settings);
 		this.mockOutput = new DataOutputMock();
 		SettingProvider.setOutputHandler(this.mockOutput);
-		SettingProvider.setRng(new RandomMock());
+		SettingProvider.setRandomNumberGenerator(new RandomMock());
 		SettingProvider.setNoiseAlgorithm(new RandomNoiseAlgorithmMock());
 		this.testObject = new Generator();
 	}
 
 	@Test
 	void execute() {
-		ArrayList<SensorData> expected = new ArrayList<SensorData>();
+		ArrayList<SimpleSensorData> expected = new ArrayList<SimpleSensorData>();
 		for (int i = 0; i < this.outputSize; i++) {
-			expected.add(new SensorData(94.1f, 0.5f, "°F"));
+			expected.add(new SimpleSensorData(94.1f, 0.5f, "°F"));
 		}
 		testObject.execute();
 		ArrayList<SensorData> output = this.mockOutput.getSavedList();

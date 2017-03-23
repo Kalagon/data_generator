@@ -1,46 +1,25 @@
 package Generator;
 
-import Main.SettingProvider;
+import Main.SettingStore;
 
 import java.util.Random;
 
 /**
- * This class is used for objects that create the SensorData. Can have different types, which are implemented inside this class.
+ * Implementations of this interface are used to generate SensorData of their respective types.
  */
-public class Sensor {
+public interface Sensor {
 
 	/**
-	 * The types of sensors implemented. Each type corresponds to a SensorDataSupplier used to create SensorData objects.
+	 * Sets up the whole object. Required before any data can be generated.
+	 * @param rng The Random object to use for retrieval of base numbers.
+	 * @param noiseAlgorithm The NoiseAlgorithm that should transform numbers.
+	 * @param settings SettingStore object used for additional setup of settings.
 	 */
-	public enum TYPE {
-		TEMPERATURE,
-	}
-
-	/**
-	 * Holds the generator object that creates the actual SensorData object.
-	 */
-	private SensorDataSupplier supplier;
-
-	/**
-	 * On creation, stores a reference to the RNG in the object.
-	 * @param rng Random
-	 * @param sensorType The type this sensor should represent.
-	 */
-	Sensor(Random rng, NoiseAlgorithm noiseAlgorithm, TYPE sensorType) {
-		switch (sensorType) {
-			case TEMPERATURE:
-				this.supplier = new TemperatureDataSupplier(rng, noiseAlgorithm, SettingProvider.getSettingStore());
-				break;
-			default:
-				break;
-		}
-	}
+	void setup(Random rng, NoiseAlgorithm noiseAlgorithm, SettingStore settings);
 
 	/**
 	 * This method returns a complete SensorData object.
-	 * @return SensorData
+	 * @return SimpleSensorData
 	 */
-	public SensorData getData() {
-		return this.supplier.get();
-	}
+	SensorData getData();
 }

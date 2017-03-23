@@ -3,17 +3,14 @@ package Generator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Created by oskar on 28.12.16.
- */
-class SensorDataTest {
-	private SensorData testObject;
+class SimpleSensorDataTest {
+	private SimpleSensorData testObject;
 
 	@BeforeEach
 	void setUp() {
-		testObject = new SensorData(24.5f, 0.5f, "°C");
+		testObject = new SimpleSensorData(24.5f, 0.5f, "°C");
 	}
 
     @Test

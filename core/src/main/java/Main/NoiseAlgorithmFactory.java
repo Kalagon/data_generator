@@ -22,7 +22,7 @@ public class NoiseAlgorithmFactory {
 	 * @param key The constant defining the NoiseAlgorithm.
 	 * @return The NoiseAlgorithm object.
 	 */
-	public static NoiseAlgorithm getInstanceOf(ALGORITHMS key) {
+	public static NoiseAlgorithm createNoiseAlgorithm(ALGORITHMS key) {
 		NoiseAlgorithm result = null;
 		switch (key) {
 			case RANDOM:
