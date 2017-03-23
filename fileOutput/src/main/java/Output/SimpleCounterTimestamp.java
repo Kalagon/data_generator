@@ -1,6 +1,7 @@
 package Output;
 
 import Main.SettingProvider;
+import Main.SettingStore;
 
 /**
  * Uses a simple counter for timestamps.
@@ -15,7 +16,7 @@ public class SimpleCounterTimestamp implements Timestamp {
 	public SimpleCounterTimestamp() {
 		this.counter = 0;
 		long outputSize = 1000;
-		SettingProvider settings = SettingProvider.get();
+		SettingStore settings = SettingProvider.getSettingStore();
 		if (settings != null) {
 			outputSize = settings.getOutputSize();
 		}

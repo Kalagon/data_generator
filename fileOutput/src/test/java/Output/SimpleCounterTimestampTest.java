@@ -1,15 +1,20 @@
 package Output;
 
+import Main.SettingProvider;
+import Main.SettingStore;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by oskar on 03.01.17.
- */
 class SimpleCounterTimestampTest {
 	private SimpleCounterTimestamp testObject;
+
+	@BeforeAll
+	static void setUpAll() {
+		SettingProvider.setSettingStore(new SettingStore());
+	}
 
 	@BeforeEach
 	void setUp() {

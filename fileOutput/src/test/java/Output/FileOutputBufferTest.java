@@ -1,6 +1,9 @@
 package Output;
 
 import Generator.SimpleSensorData;
+import Main.SettingProvider;
+import Main.SettingStore;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,11 +11,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by oskar on 15/01/17.
- */
 class FileOutputBufferTest {
 	FileOutputBuffer testObject;
+
+	@BeforeAll
+	static void setUpAll() {
+		SettingProvider.setSettingStore(new SettingStore());
+	}
 
 	@BeforeEach
 	void setUpEach() {

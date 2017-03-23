@@ -1,6 +1,6 @@
 package Output;
 
-import Generator.SimpleSensorData;
+import Generator.SensorData;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * Buffer for SimpleSensorData objects. May be created with a maximum size but it has to be enforced manually.
  */
 public class FileOutputBuffer {
-	private LinkedList<SimpleSensorData> buffer;
+	private LinkedList<SensorData> buffer;
 	private long bufferCurrentSize;
 	private long bufferMaxSize;
 	private Timestamp timestamp;
@@ -27,16 +27,16 @@ public class FileOutputBuffer {
 
 	/**
 	 * Appends an item to the buffer.
-	 * @param item The SimpleSensorData object.
+	 * @param item The SensorData object.
 	 */
-	public void append(SimpleSensorData item) {
+	public void append(SensorData item) {
 		this.buffer.add(item);
 		this.bufferCurrentSize++;
 	}
 
 	/**
 	 * Checks if the buffer is full.
-	 * @return true if there are at least as many items in the buffer as the setSettingStore maximum.
+	 * @return true if there are at least as many items in the buffer as the set maximum.
 	 */
 	public boolean isFull() {
 		boolean result = true;
@@ -60,7 +60,7 @@ public class FileOutputBuffer {
 	 */
 	public List<String> getContents() {
 		List<String> result = new LinkedList<>();
-		SimpleSensorData temp;
+		SensorData temp;
 		while (!this.buffer.isEmpty()) {
 			temp = this.buffer.removeFirst();
 			result.add(timestamp.toString() + " " + temp.toString());

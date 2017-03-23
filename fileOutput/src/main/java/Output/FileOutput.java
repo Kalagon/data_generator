@@ -1,6 +1,6 @@
 package Output;
 
-import Generator.SimpleSensorData;
+import Generator.SensorData;
 import Main.DataOutput;
 
 import java.io.IOException;
@@ -43,7 +43,7 @@ public class FileOutput implements DataOutput {
 	 * Store a SimpleSensorData object in the buffer. If the buffer is full its contents will be written to disk.
 	 * @param inputObject The object to store.
 	 */
-	public void save(SimpleSensorData inputObject) {
+	public void save(SensorData inputObject) {
 		this.buffer.append(inputObject);
 		if (this.buffer.isFull()) {
 			try {
