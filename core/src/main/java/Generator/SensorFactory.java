@@ -8,7 +8,7 @@ import Main.SettingProvider;
 public class SensorFactory {
 
 	/**
-	 * The types of sensors implemented. Each type corresponds to a SensorDataSupplier used to create SimpleSensorData objects.
+	 * The types of sensors implemented. Each type corresponds to a Sensor used to create SensorData objects.
 	 */
 	public enum TYPE {
 		TEMPERATURE,
