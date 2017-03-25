@@ -9,7 +9,7 @@ buildscript {
 
 allprojects {
     group 'ba-code'
-    version '0.1-DEV'
+    version '0.5-Alpha1'
 
     apply plugin: 'idea'
     apply plugin: 'java'
