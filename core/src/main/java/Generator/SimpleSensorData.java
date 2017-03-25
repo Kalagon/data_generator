@@ -40,8 +40,8 @@ public class SimpleSensorData implements SensorData {
 	}
 
 	public String toString(String separator) {
-		return  "currentValue:" + currentValue + separator +
-				"precision:" + precision + separator +
-				"measurementUnit:" + measurementUnit;
+		return "currentValue:" + currentValue + separator +
+			   "precision:" + precision + separator +
+			   "measurementUnit:" + measurementUnit;
 	}
 }

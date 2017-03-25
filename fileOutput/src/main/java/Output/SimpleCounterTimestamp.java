@@ -26,7 +26,6 @@ public class SimpleCounterTimestamp implements Timestamp {
 
 	/**
 	 * Returns the string representation of the timestamp.
-	 *
 	 * @return String
 	 */
 	@Override

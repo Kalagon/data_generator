@@ -12,17 +12,17 @@ public class FileOutputSettingStore implements Serializable {
 	private long bufferSize;
 	private FileOutput.EXISTING existingFileHandling = FileOutput.EXISTING.OVERWRITE;
 
+	public FileOutputSettingStore(String fileLocation, long bufferSize) {
+		this.fileLocation = Paths.get(fileLocation);
+		this.bufferSize = bufferSize;
+	}
+
 	public FileOutput.EXISTING getExistingFileHandling() {
 		return existingFileHandling;
 	}
 
 	public void setExistingFileHandling(FileOutput.EXISTING existingFileHandling) {
 		this.existingFileHandling = existingFileHandling;
-	}
-
-	public FileOutputSettingStore(String fileLocation, long bufferSize) {
-		this.fileLocation = Paths.get(fileLocation);
-		this.bufferSize = bufferSize;
 	}
 
 	public Path getFileLocation() {

@@ -17,9 +17,9 @@ public class TemperatureSensor implements Sensor {
 
 	/**
 	 * Sets up the whole object. Required before any data can be generated.
-	 * @param rng The Random object to use for retrieval of base numbers.
+	 * @param rng            The Random object to use for retrieval of base numbers.
 	 * @param noiseAlgorithm The NoiseAlgorithm that should transform numbers.
-	 * @param settings SettingStore object used for additional setup of settings.
+	 * @param settings       SettingStore object used for additional setup of settings.
 	 */
 	public void setup(Random rng, NoiseAlgorithm noiseAlgorithm, SettingStore settings) {
 		this.rng = rng;
@@ -29,7 +29,7 @@ public class TemperatureSensor implements Sensor {
 		float rangeDelta = rangeMax - rangeMin;
 		if (settings.isPrecisionAndRangeRelative()) {
 			float mean = 25f;
-			rangeMin = mean - ( rangeDelta / 2 );
+			rangeMin = mean - (rangeDelta / 2);
 		}
 		this.rangeMin = rangeMin;
 		this.rangeDelta = (int) rangeDelta;
@@ -69,6 +69,6 @@ public class TemperatureSensor implements Sensor {
 	 * @return float The value in Farenheit.
 	 */
 	private float cToF(float celsiusVal) {
-		return ( 32f + ( celsiusVal * 1.8f ) );
+		return (32f + (celsiusVal * 1.8f));
 	}
 }

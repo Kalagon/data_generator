@@ -8,13 +8,6 @@ import Main.SettingProvider;
 public class SensorFactory {
 
 	/**
-	 * The types of sensors implemented. Each type corresponds to a Sensor used to create SensorData objects.
-	 */
-	public enum TYPE {
-		TEMPERATURE,
-	}
-
-	/**
 	 * Builds and returns a Sensor of the requested TYPE with settings from SettingProvider.
 	 * @param type The TYPE of Sensor that should be built.
 	 * @return Sensor
@@ -31,5 +24,12 @@ public class SensorFactory {
 		result.setup(SettingProvider.getRandomNumberGenerator(), SettingProvider.getNoiseAlgorithm(), SettingProvider.getSettingStore());
 
 		return result;
+	}
+
+	/**
+	 * The types of sensors implemented. Each type corresponds to a Sensor used to create SensorData objects.
+	 */
+	public enum TYPE {
+		TEMPERATURE,
 	}
 }

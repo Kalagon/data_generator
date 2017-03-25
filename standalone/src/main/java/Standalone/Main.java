@@ -16,7 +16,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		instance.preprocessArgs(args);
-		SettingProvider.setOutputHandler( instance.setupDataOutput() );
+		SettingProvider.setOutputHandler(instance.setupDataOutput());
 		Init.run(args);
 	}
 

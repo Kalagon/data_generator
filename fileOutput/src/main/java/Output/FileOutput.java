@@ -13,17 +13,9 @@ import java.nio.file.StandardOpenOption;
  * This class is used to handle storing the results. Using multiple objects of this class may cause issues if EXISTING.OVERWRITE is setSettingStore and may shuffle the order of output lines.
  */
 public class FileOutput implements DataOutput {
-	/**
-	 * Used to setSettingStore how to handle existing files in the place of the output file.
-	 */
-	public enum EXISTING {
-		OVERWRITE, APPEND
-	}
-
 	private Path filePath;
 	private FileOutputBuffer buffer;
 	private EXISTING handling;
-
 	/**
 	 * Initializes the object with the given parameters.
 	 * @param settings The FileOutputSettingStore object.
@@ -58,7 +50,7 @@ public class FileOutput implements DataOutput {
 	 * Writes the contents of the buffer to the setSettingStore file. Appends lines.
 	 * @throws IOException In case writing to the file fails.
 	 */
-	public void writeToFile() throws  IOException {
+	public void writeToFile() throws IOException {
 		Files.write(this.filePath, this.buffer.getContents(), Charset.defaultCharset(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
 	}
 
@@ -73,6 +65,13 @@ public class FileOutput implements DataOutput {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * Used to setSettingStore how to handle existing files in the place of the output file.
+	 */
+	public enum EXISTING {
+		OVERWRITE, APPEND
 	}
 
 

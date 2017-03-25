@@ -15,12 +15,11 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 
 	/**
 	 * Fills the blank object with the correct values based on the given settings. The NoiseSettingStore is casted to a RandomNoiseSettingStore without checking. It must be ensured that settings is an instance of RandomNoiseSettingStore beforehand.
-	 *
 	 * @param settings The requested settings.
 	 */
 	@Override
 	public void setup(NoiseSettingStore settings) {
-		assert(settings instanceof RandomNoiseSettingStore);
+		assert (settings instanceof RandomNoiseSettingStore);
 		RandomNoiseSettingStore tmpSettings = (RandomNoiseSettingStore) settings;
 		this.rng = new Random(tmpSettings.getSeed());
 		this.noiseFactor = tmpSettings.getNoiseFactor();
@@ -29,7 +28,6 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 
 	/**
 	 * Used to add noise to an integer value.
-	 *
 	 * @param inputValue The clean value.
 	 * @return int
 	 */
@@ -39,14 +37,13 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 		boolean applyNoise = (rng.nextFloat() <= noiseFactor);
 		if (applyNoise) {
 			int noiseValue = rng.nextInt(this.range * 2);
-			result = ( inputValue + ( noiseValue - this.range ) );
+			result = (inputValue + (noiseValue - this.range));
 		}
 		return result;
 	}
 
 	/**
 	 * Used to add noise to a float value.
-	 *
 	 * @param inputValue The clean float value.
 	 * @return float
 	 */
@@ -56,7 +53,7 @@ public class RandomNoiseAlgorithm implements NoiseAlgorithm {
 		boolean applyNoise = (rng.nextFloat() <= noiseFactor);
 		if (applyNoise) {
 			float noiseValue = rng.nextInt(this.range * 2) + rng.nextFloat();
-			result = ( inputValue + ( noiseValue - this.range ) );
+			result = (inputValue + (noiseValue - this.range));
 		}
 		return result;
 	}

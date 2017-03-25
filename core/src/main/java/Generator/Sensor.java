@@ -11,9 +11,9 @@ public interface Sensor {
 
 	/**
 	 * Sets up the whole object. Required before any data can be generated.
-	 * @param rng The Random object to use for retrieval of base numbers.
+	 * @param rng            The Random object to use for retrieval of base numbers.
 	 * @param noiseAlgorithm The NoiseAlgorithm that should transform numbers.
-	 * @param settings SettingStore object used for additional setup of settings.
+	 * @param settings       SettingStore object used for additional setup of settings.
 	 */
 	void setup(Random rng, NoiseAlgorithm noiseAlgorithm, SettingStore settings);
 

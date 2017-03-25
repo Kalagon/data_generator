@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class PersistenceHandlerTest {
 	private PersistenceHandler testObject;
-	private String location = "test.yml";
+	private String location = "build/test.yml";
 
 	@BeforeEach
 	void setUp() {

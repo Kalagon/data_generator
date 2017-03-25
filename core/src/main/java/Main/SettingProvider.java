@@ -9,15 +9,16 @@ import java.util.Random;
  */
 public class SettingProvider {
 	private static SettingProvider instance;
+	private static DataOutput outputHandler;
 	private SettingStore settings;
-	private DataOutput outputHandler;
 	private NoiseAlgorithm noiseAlgorithm;
 	private Random randomNumberGenerator;
 
 	/**
 	 * Private to restrict creation to the static methods.
 	 */
-	private SettingProvider() {}
+	private SettingProvider() {
+	}
 
 	/**
 	 * Returns the SettingProvider object.
@@ -32,15 +33,6 @@ public class SettingProvider {
 	}
 
 	/**
-	 * Creates a new SettingProvider with the given settings.
-	 * @param settings The settings object.
-	 */
-	public static void setSettingStore(SettingStore settings) {
-		instance = new SettingProvider();
-		instance.settings = settings;
-	}
-
-	/**
 	 * Returns the SettingStore containing user-selected settings.
 	 * @return The SettingStore object currently in use.
 	 */
@@ -51,6 +43,15 @@ public class SettingProvider {
 			instance.settings = new SettingStore();
 		}
 		return instance.settings;
+	}
+
+	/**
+	 * Creates a new SettingProvider with the given settings.
+	 * @param settings The settings object.
+	 */
+	public static void setSettingStore(SettingStore settings) {
+		instance = new SettingProvider();
+		instance.settings = settings;
 	}
 
 	/**
@@ -79,7 +80,7 @@ public class SettingProvider {
 	 * @return The DataOutput handler.
 	 */
 	public static DataOutput getOutputHandler() {
-		return instance.outputHandler;
+		return outputHandler;
 	}
 
 	/**
@@ -87,7 +88,7 @@ public class SettingProvider {
 	 * @param outputHandler
 	 */
 	public static void setOutputHandler(DataOutput outputHandler) {
-		instance.outputHandler = outputHandler;
+		SettingProvider.outputHandler = outputHandler;
 	}
 
 	/**

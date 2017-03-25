@@ -58,7 +58,7 @@ public class Generator {
 	public void execute() {
 		Sensor currentSensor;
 		for (long i = 0; i < this.outputSize; i++) {
-			currentSensor = this.sensorList[(int) ( i % sensorCount )];
+			currentSensor = this.sensorList[(int) (i % sensorCount)];
 			this.outputHandler.save(currentSensor.getData());
 		}
 	}

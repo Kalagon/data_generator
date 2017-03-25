@@ -54,9 +54,10 @@ public class Init {
 					outputSize = (tmp > 0 ? tmp : 1000);
 					i++;
 					break;
+				case "--help":
+				case "-h":
+					System.out.println("Core: Possible options are --save, --load, --settinglocation <string>, --outputsize <long> and --createconfigonly.\n\r");
 				default:
-					System.out.println("Unrecognized option.\n\rPossible options are --save, --load, --settinglocation <string>, --outputsize <long> and --createconfigonly.");
-					System.exit(1);
 					break;
 			}
 			i++;

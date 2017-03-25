@@ -3,19 +3,10 @@ package Main;
 import Generator.NoiseAlgorithm;
 import Generator.RandomNoiseAlgorithm;
 
-import java.util.HashMap;
-
 /**
  * Contains an enum of all possible NoiseAlgorithms. Used to create instances of NoiseAlgorithms.
  */
 public class NoiseAlgorithmFactory {
-
-	/**
-	 * The names of all implemented algorithms.
-	 */
-	public enum ALGORITHMS {
-		RANDOM
-	}
 
 	/**
 	 * Returns an instance of the set NoiseAlgorithm.
@@ -32,6 +23,13 @@ public class NoiseAlgorithmFactory {
 				break;
 		}
 		return result;
+	}
+
+	/**
+	 * The names of all implemented algorithms.
+	 */
+	public enum ALGORITHMS {
+		RANDOM
 	}
 
 }

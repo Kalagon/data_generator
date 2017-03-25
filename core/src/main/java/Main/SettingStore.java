@@ -1,6 +1,5 @@
 package Main;
 
-import Generator.Sensor;
 import Generator.SensorFactory;
 
 import java.io.Serializable;
@@ -15,7 +14,7 @@ public class SettingStore implements Serializable {
 	private float rangeMax = 100f;
 	private float precision = 0.5f;
 	private boolean precisionAndRangeRelative = true;
-	private SensorFactory.TYPE[] sensorTypes = { SensorFactory.TYPE.TEMPERATURE };
+	private SensorFactory.TYPE[] sensorTypes = {SensorFactory.TYPE.TEMPERATURE};
 	private NoiseAlgorithmFactory.ALGORITHMS noiseAlgorithm = NoiseAlgorithmFactory.ALGORITHMS.RANDOM;
 	private NoiseSettingStore noiseSettings = new RandomNoiseSettingStore();
 
