@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
 /**
- * This class is used to handle storing the results. Using multiple objects of this class may cause issues if EXISTING.OVERWRITE is setSettingStore and may shuffle the order of output lines.
+ * This class is used to handle storing the results. Using multiple objects of this class may cause issues if EXISTING.OVERWRITE is set and may shuffle the order of output lines.
  */
 public class FileOutput implements DataOutput {
 	private Path filePath;
@@ -32,26 +32,27 @@ public class FileOutput implements DataOutput {
 	}
 
 	/**
-	 * Store a SimpleSensorData object in the buffer. If the buffer is full its contents will be written to disk.
+	 * Store a SensorData object in the buffer. If the buffer is full its contents will be written to disk.
 	 * @param inputObject The object to store.
 	 */
 	public void save(SensorData inputObject) {
 		this.buffer.append(inputObject);
 		if (this.buffer.isFull()) {
-			try {
-				this.writeToFile();
-			} catch (IOException e) {
-				System.exit(2);
-			}
+			this.flush();
 		}
 	}
 
 	/**
-	 * Writes the contents of the buffer to the setSettingStore file. Appends lines.
+	 * Writes the contents of the buffer to the set file. Appends lines.
 	 * @throws IOException In case writing to the file fails.
 	 */
-	public void writeToFile() throws IOException {
-		Files.write(this.filePath, this.buffer.getContents(), Charset.defaultCharset(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+	public void flush() {
+		try{
+			Files.write(this.filePath, this.buffer.getContents(), Charset.defaultCharset(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+		} catch (IOException e) {
+			System.out.println("Writing outputs to disk failed!");
+			System.exit(2);
+		}
 	}
 
 	/**

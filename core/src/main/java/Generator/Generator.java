@@ -61,5 +61,6 @@ public class Generator {
 			currentSensor = this.sensorList[(int) (i % sensorCount)];
 			this.outputHandler.save(currentSensor.getData());
 		}
+		this.outputHandler.flush();
 	}
 }

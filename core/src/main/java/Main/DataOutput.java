@@ -12,4 +12,9 @@ public interface DataOutput {
 	 * @param data The SimpleSensorData object to process.
 	 */
 	void save(SensorData data);
+
+	/**
+	 * Force processing of all unprocessed data objects.
+	 */
+	void flush();
 }

@@ -35,3 +35,8 @@ and available data types:<br>
 `0984 currentValue:34.055492,precision:0.5,measurementUnit:°C`<br>
 This corresponds to<br>
 `<timestamp> <data>`
+
+## Errors
+
+The application currently does not have full error handling. It should usually print information on errors to stdout. Some notes:<br>
+Exit code 2: writing outputs to disk failed.

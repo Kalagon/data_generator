@@ -12,6 +12,8 @@ class DataOutputMock implements DataOutput {
 		this.savedList.add(data);
 	}
 
+	public void flush() {}
+
 	public ArrayList<SensorData> getSavedList() {
 		return savedList;
 	}

@@ -28,13 +28,13 @@ class FileOutputTest {
 	}
 
 	@Test
-	void writeToFile() throws IOException {
+	void flush() throws IOException {
 		FileOutputSettingStore settings = new FileOutputSettingStore("build/testfile.txt", 100);
 		FileOutput testObject = new FileOutput(settings);
 		for (int i = 0; i < 3; i++) {
 			testObject.save(new SimpleSensorData(10.2f, 0.1f, "C"));
 		}
-		testObject.writeToFile();
+		testObject.flush();
 	}
 
 }
