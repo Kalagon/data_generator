@@ -1,0 +1,19 @@
+evaluationDependsOn(':core')
+evaluationDependsOn(':fileOutput')
+
+dependencies {
+    compile project(':core')
+    compile project(':fileOutput')
+}
+
+//create a single Jar with all dependencies
+task fullJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'IoT Generator - Standalone',
+                'Implementation-Version': version,
+                'Main-Class': 'Standalone.Main'
+    }
+    baseName = 'iot_generator_standalone'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
