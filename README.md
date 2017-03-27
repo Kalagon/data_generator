@@ -9,17 +9,17 @@ The following command-line arguments are available:<br>
 
 `--help, -h`<br>
 Prints a list of available commands.<br>
-`--outputsize \<long\>, -n \<long\>`<br>
+`--outputsize <long>, -n <long>`<br>
 The amount of output that should be generated. Default: 1000<br>
-`--output \<string\>, -o \<string\>`<br>
+`--output <string>, -o <string>`<br>
 Sets the file the output will be written to. Default: "output.txt"<br>
-`--buffersize \<long\>`<br>
+`--buffersize <long>`<br>
 Defines how many lines should be stored in the buffer at a time. Default: 500<br>
 `--save, -s`<br>
 Write the configuration to a file.<br>
 `--load, -l`<br>
 Load the configuration from a file.<br>
-`--settinglocation \<string\>`<br>
+`--settinglocation <string>`<br>
 The file to use for configuration reads/writes. Default: "settings.yml"<br>
 `--createconfigonly`<br>
 Only writes the config file and exits.<br>
