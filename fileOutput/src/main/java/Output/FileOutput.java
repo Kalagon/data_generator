@@ -16,6 +16,7 @@ public class FileOutput implements DataOutput {
 	private Path filePath;
 	private FileOutputBuffer buffer;
 	private EXISTING handling;
+
 	/**
 	 * Initializes the object with the given parameters.
 	 * @param settings The FileOutputSettingStore object.
@@ -44,7 +45,6 @@ public class FileOutput implements DataOutput {
 
 	/**
 	 * Writes the contents of the buffer to the set file. Appends lines.
-	 * @throws IOException In case writing to the file fails.
 	 */
 	public void flush() {
 		try{
