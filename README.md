@@ -4,6 +4,7 @@ This is a flexible framework that can be used to generate synthetic output of se
 Nearly all aspects of it are modular and easily expandable, so it could also be used to generate arbitrary time series data.
 
 It was originally written as part of my bachelor's thesis.
+The thesis can be found on my [website](https://traubenuss.de/blog/bachelorthesis/bachelor_thesis.pdf).
 
 ## Building
 
