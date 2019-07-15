@@ -1,8 +1,17 @@
+# Data Generator
+
+This is a flexible framework that can be used to generate synthetic output of sensor networks.
+Nearly all aspects of it are modular and easily expandable, so it could also be used to generate arbitrary time series data.
+
+It was originally written as part of my bachelor's thesis.
+
 ## Building
+
 This project uses Gradle to manage dependencies and build the application.  
 To build a stand-alone jar file run task `fullJar` in subproject 'standalone'.  
 
 ## Usage
+
 `java -jar <application> [<arguments>]`  
 
 The following command-line arguments are available:  
